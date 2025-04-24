@@ -1,15 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/backdoors')
 def index():
-    return "Welcome to the starters"
+    return render_template("index.html")
 
 
 @app.route('/about')
 def about():
-    return "All rights are NOT reserved"
+    return render_template("about.html")
+
+
+@app.route('/user/<string:name>/<int:id>')
+def user(name,id):
+    return f"Welcome, {str(name)}, your id: {str(id)}"
 
 if __name__ == "interface":
     app.run(debug=True)
