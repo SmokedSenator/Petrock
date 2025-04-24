@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -13,9 +13,9 @@ def about():
     return render_template("about.html")
 
 
-@app.route('/user/<string:name>/<int:id>')
-def user(name,id):
-    return f"Welcome, {str(name)}, your id: {str(id)}"
+@app.route('/shop')
+def shop():
+    return render_template("shop.html")
 
 if __name__ == "interface":
     app.run(debug=True)
